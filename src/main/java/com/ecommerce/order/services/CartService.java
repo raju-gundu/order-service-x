@@ -16,7 +16,7 @@ import java.util.List;
 public class CartService {
     private final CartItemRepository cartItemRepository;
 
-    public boolean addToCart(String userId, CartItemRequest request) {
+    public boolean addToCart(Long userId, CartItemRequest request) {
 //        // Look for product
 //        Optional<Product> productOpt = productRepository.findById(request.getProductId());
 //        if (productOpt.isEmpty())
@@ -50,7 +50,7 @@ public class CartService {
         return true;
     }
 
-    public boolean deleteItemFromCart(String userId, String productId) {
+    public boolean deleteItemFromCart(Long userId, Long productId) {
         CartItem cartItem = cartItemRepository.findByUserIdAndProductId(userId, productId);
 
         if (cartItem != null){
@@ -60,11 +60,11 @@ public class CartService {
         return false;
     }
 
-    public List<CartItem> getCart(String userId) {
+    public List<CartItem> getCart(Long userId) {
         return cartItemRepository.findByUserId(userId);
     }
 
-    public void clearCart(String userId) {
+    public void clearCart(Long userId) {
         cartItemRepository.deleteByUserId(userId);
     }
 }

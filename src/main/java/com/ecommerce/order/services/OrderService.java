@@ -20,7 +20,7 @@ public class OrderService {
     private final CartService cartService;
     private final OrderRepository orderRepository;
 
-    public Optional<OrderResponse> createOrder(String userId) {
+    public Optional<OrderResponse> createOrder(Long userId) {
         // Validate for cart items
         List<CartItem> cartItems = cartService.getCart(userId);
         if (cartItems.isEmpty()) {
